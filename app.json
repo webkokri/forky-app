@@ -1,0 +1,82 @@
+{
+  "expo": {
+    "name": "FORKY",
+    "slug": "forky",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logo.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ca.forky.app",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "remote-notification"
+        ]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F7F6F2",
+        "foregroundImage": "./assets/images/logo.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "ca.forky.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-secure-store",
+      "expo-status-bar",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Forky uses your location to show stores and restaurants that deliver to you."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#FF6819",
+          "image": "./assets/images/logo-round.png",
+          "imageWidth": 176
+        }
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          "enableGooglePay": true
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#FF6819"
+        }
+      ],
+      "./plugins/withStripeAndroidFix",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraProguardRules": "# Stripe's in-app card provisioning is not used by Forky; its optional classes are not shipped\n-dontwarn com.stripe.android.pushProvisioning.**\n-dontwarn com.reactnativestripesdk.pushprovisioning.**\n-dontwarn com.google.android.gms.tapandpay.**"
+          }
+        }
+      ]
+    ],
+    "scheme": "forky",
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "55e2a880-fa4c-4f21-a903-ed1a05b813cd"
+      }
+    },
+    "owner": "simantechstudio"
+  }
+}
